@@ -38,12 +38,20 @@
 <!-- BACKGROUND-->
       <a-entity environment="preset: forest; groundColor: #445; grid: cross"></a-entity>
       
+  <a-box id="alternativa11" position="-1 0.5 -3" rotation="0 0 0" color="#4CC3D9"
+           event-set__enter="_event: mouseenter; color: #8FF7FF"
+           event-set__leave="_event: mouseleave; color: #4CC3D9">
+    <a-text id="alternativa1" align="center" geometry="primitive: plane; width: 1.75" width="9" height="7.5" color="#000000" value="Alternativa 1"  ></a-text>
+    </a-box>
+    
+<a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"
+                event-set__enter="_event: mouseenter; _target: #cylinderText; visible: true"
+                event-set__leave="_event: mouseleave; _target: #cylinderText; visible: false">
+      <a-text id="cylinderText" value="This is a cylinder" align="center" color="#000000" visible="false" position="0 -0.55 0.55"
+              geometry="primitive: plane; width: 1.75" material="color: #333"></a-text>
+    </a-cylinder>
       
-      <a-text id="pregunta1" position="-1 2 -2"  height="1.5" color="#FFC65D" value="Pregunta 1"></a-text>
-      <a-text id="alternativa1" position="-1 1 -2" width="1" height="1" color="#000000" value="Alternativa 1" geometry="primitive:plane"></a-text>
-
-    <a-entity geometry light></a-entity>
-
+      
     </a-scene>
 
     <script>
@@ -55,12 +63,18 @@
         alert('Ud. escogió alternativa 1');
     });
       
-    /*var triggerShake = document.createEvent("HTMLEvents");
-    triggerShake.initEvent("shake", true, true);
+    var sceneEl = document.querySelector('a-scene');
+var entityEl = document.createElement('a-text');
+sceneEl.appendChild(entityEl);
+entityEl.setAttribute('position', {x: -1, y: 1.5, z: -1.5});
+entityEl.setAttribute('value', 'ABCDE');
+entityEl.setAttribute('width', '9');
+entityEl.setAttribute('height', '5');
+entityEl.setAttribute('color', '#000000');
 
-    function shakeMe(){
-      document.dispatchEvent(triggerShake);
-    }*/
+document.querySelector('#alternativa11').addEventListener('click', function (evt) {
+  console.log('Escogió alternativa 1');
+});
     </script>
   </body>
 </html>
